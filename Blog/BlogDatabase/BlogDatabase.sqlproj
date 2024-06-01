@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build">
+  <Sdk Name="Microsoft.Build.Sql" Version="0.1.3-preview" />
+  <PropertyGroup>
+    <Name>BlogDatabase</Name>
+    <ProjectGuid>{b93797b2-365a-43a8-a0f9-5b78fdaf1f70}</ProjectGuid>
+    <DSP>Microsoft.Data.Tools.Schema.Sql.Sql150DatabaseSchemaProvider</DSP>
+    <ModelCollation>1033, CI</ModelCollation>
+    <TargetDatabaseSet>True</TargetDatabaseSet>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <ItemGroup>
+    <Folder Include="Tables" />
+    <Folder Include="Stored Procedures" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Tables\.gitkeep" />
+    <None Include="BlogDatabase.dbmdl" />
+    <None Include="BlogDatabase.jfm" />
+    <None Include="BlogDatabase.sqlproj.user" />
+    <None Include="Stored Procedures\.gitkeep" />
+    <None Include="BlogDatabase.publish.xml" />
+  </ItemGroup>
+  <Target Name="BeforeBuild">
+    <Delete Files="$(BaseIntermediateOutputPath)\project.assets.json" />
+  </Target>
+  <ItemGroup>
+    <Build Remove="Scripts\**" />
+    <Build Include="Tables\Comment.sql" />
+    <Build Include="Tables\User.sql" />
+    <Build Include="Tables\Post.sql" />
+  </ItemGroup>
+</Project>

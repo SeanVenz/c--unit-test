@@ -1,0 +1,12 @@
+﻿CREATE TABLE [dbo].[Post] 
+(
+    [Id] INT NOT NULL PRIMARY KEY IDENTITY,
+	[UserId] INT NOT NULL,
+    [Title] NVARCHAR (100) NOT NULL,
+    [Content] TEXT NOT NULL,
+	[Status] NVARCHAR (15) NOT NULL,
+	[DateTimeCreated] DATETIME NOT NULL,
+	[DateTimeUpdated] DATETIME NOT NULL,
+	CONSTRAINT FK_PostUser FOREIGN KEY ([UserId]) REFERENCES [dbo].[User](Id)
+)
+GO
